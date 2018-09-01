@@ -11,7 +11,7 @@ import Alamofire
 
 class MoviesAPIManager: NSObject {
     
-    class func loadMovies(withKeywork keywork: String, pageNumber: Int, success: (_: MoviesResponse) -> Void, failure: (_: String) -> Void) {
+    class func loadMovies(withKeywork keywork: String, pageNumber: Int, success: @escaping (_: MoviesResponse) -> Void, failure: @escaping (_: String) -> Void) {
         
         Alamofire.request(MoviesRouter.movies(keywork: keywork, page: pageNumber)).responseJSON { (response) in
             
@@ -22,18 +22,23 @@ class MoviesAPIManager: NSObject {
                     let decoder = JSONDecoder()
                     let moviesResponse = try decoder.decode(MoviesResponse.self, from: response.data!)
                     print(moviesResponse)
+                    success(moviesResponse)
                     
                 } catch let error {
-                    print("Parsing failed with error: \(error)")
+                    let errorMessage = "Parsing failed with error: \(error)"
+                    print(errorMessage)
+                    failure(errorMessage)
                 }
                 
             case .failure(let error):
-                print("Request failed with error: \(error)")
+                let errorMessage = "Request failed with error: \(error)"
+                print(errorMessage)
+                failure(errorMessage)
             }
         }
     }
     
-    class func loadMovies(pageNumber: Int, success: (_: MoviesResponse) -> Void, failure: (_: String) -> Void) {
+    class func loadMovies(pageNumber: Int, success: @escaping (_: MoviesResponse) -> Void, failure: @escaping (_: String) -> Void) {
         self.loadMovies(withKeywork: "", pageNumber: pageNumber, success: { (response) in
             success(response)
         }, failure: { (errorMessage) in
