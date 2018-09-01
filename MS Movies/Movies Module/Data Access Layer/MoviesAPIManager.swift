@@ -11,7 +11,7 @@ import Alamofire
 
 class MoviesAPIManager: NSObject {
     
-    class func loadMovies(withKeywork keywork: String, pageNumber: Int) {
+    class func loadMovies(withKeywork keywork: String, pageNumber: Int, success: (_: MoviesResponse) -> Void, failure: (_: String) -> Void) {
         
         Alamofire.request(MoviesRouter.movies(keywork: keywork, page: pageNumber)).responseJSON { (response) in
             
@@ -33,8 +33,12 @@ class MoviesAPIManager: NSObject {
         }
     }
     
-    class func loadMovies(pageNumber: Int) {
-        self.loadMovies(withKeywork: "", pageNumber: pageNumber)
+    class func loadMovies(pageNumber: Int, success: (_: MoviesResponse) -> Void, failure: (_: String) -> Void) {
+        self.loadMovies(withKeywork: "", pageNumber: pageNumber, success: { (response) in
+            success(response)
+        }, failure: { (errorMessage) in
+            failure(errorMessage)
+        })
     }
     
 }
