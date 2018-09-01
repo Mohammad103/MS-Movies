@@ -6,6 +6,7 @@ target 'MS Movies' do
     use_frameworks!
     
     pod 'Alamofire', '~> 4.7'
+    pod 'Kingfisher', '~> 4.0'
     
     target 'MS MoviesTests' do
         inherit! :search_paths
