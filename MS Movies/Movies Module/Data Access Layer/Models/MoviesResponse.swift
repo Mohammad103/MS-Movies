@@ -10,13 +10,13 @@ import Foundation
 
 struct MoviesResponse : Codable {
     
-    let results : [Movie]?
+    let movies : [Movie]?
     let page : Int?
     let totalPages : Int?
     let totalResults : Int?
     
     enum CodingKeys: String, CodingKey {
-        case results = "results"
+        case movies = "results"
         case page = "page"
         case totalPages = "total_pages"
         case totalResults = "total_results"
@@ -24,7 +24,7 @@ struct MoviesResponse : Codable {
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        results = try values.decodeIfPresent([Movie].self, forKey: .results)
+        movies = try values.decodeIfPresent([Movie].self, forKey: .movies)
         page = try values.decodeIfPresent(Int.self, forKey: .page)
         totalPages = try values.decodeIfPresent(Int.self, forKey: .totalPages)
         totalResults = try values.decodeIfPresent(Int.self, forKey: .totalResults)
