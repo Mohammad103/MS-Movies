@@ -10,6 +10,7 @@
 		2B53C65AF97D81E3FD05F4A6 /* Pods_MS_MoviesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C2280265C9A2856F66F0C80 /* Pods_MS_MoviesUITests.framework */; };
 		66745D1D53904746F213DF49 /* Pods_MS_Movies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3472D1C1CF72C998492DEE28 /* Pods_MS_Movies.framework */; };
 		6FA60CEF429BED2D7A1CE28E /* Pods_MS_MoviesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9740BBF14B5D35B4B32FACA2 /* Pods_MS_MoviesTests.framework */; };
+		84307D5A213AFB7000EA8F28 /* Avenir-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84307D59213AFB7000EA8F28 /* Avenir-Heavy.ttf */; };
 		843E24E5213A2157004D381C /* MoviesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E24E4213A2157004D381C /* MoviesResponse.swift */; };
 		843E24E7213A2190004D381C /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E24E6213A2190004D381C /* Movie.swift */; };
 		843E24E9213A3667004D381C /* MoviesAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E24E8213A3667004D381C /* MoviesAPIManager.swift */; };
@@ -47,6 +48,7 @@
 		24C4B4E89AB37660D15A5C5C /* Pods-MS MoviesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MS MoviesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MS MoviesTests/Pods-MS MoviesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3472D1C1CF72C998492DEE28 /* Pods_MS_Movies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MS_Movies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6004B4F371CBDCB780096B3C /* Pods-MS MoviesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MS MoviesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MS MoviesUITests/Pods-MS MoviesUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		84307D59213AFB7000EA8F28 /* Avenir-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-Heavy.ttf"; sourceTree = "<group>"; };
 		843E24E4213A2157004D381C /* MoviesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesResponse.swift; sourceTree = "<group>"; };
 		843E24E6213A2190004D381C /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		843E24E8213A3667004D381C /* MoviesAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAPIManager.swift; sourceTree = "<group>"; };
@@ -99,6 +101,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84307D58213AFB5F00EA8F28 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				84307D59213AFB7000EA8F28 /* Avenir-Heavy.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		843E24DE213A1F2B004D381C /* Movies Module */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +208,7 @@
 				846D6046213A1D900082481F /* ViewController.swift */,
 				843E24DE213A1F2B004D381C /* Movies Module */,
 				843E24EC213A3872004D381C /* Utilities */,
+				84307D58213AFB5F00EA8F28 /* Fonts */,
 				8449B8FF213A1EFB0000C80F /* Assets */,
 			);
 			path = "MS Movies";
@@ -355,6 +366,7 @@
 				846D604F213A1D920082481F /* LaunchScreen.storyboard in Resources */,
 				846D604C213A1D920082481F /* Assets.xcassets in Resources */,
 				846D604A213A1D900082481F /* Main.storyboard in Resources */,
+				84307D5A213AFB7000EA8F28 /* Avenir-Heavy.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
