@@ -89,6 +89,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		843E24DE213A1F2B004D381C /* Movies Module */ = {
+			isa = PBXGroup;
+			children = (
+				843E24E0213A1F3E004D381C /* Data Access Layer */,
+				843E24E1213A1F47004D381C /* View Models */,
+				843E24DF213A1F37004D381C /* UI Layer */,
+			);
+			path = "Movies Module";
+			sourceTree = "<group>";
+		};
+		843E24DF213A1F37004D381C /* UI Layer */ = {
+			isa = PBXGroup;
+			children = (
+				843E24E3213A1F69004D381C /* Cells */,
+			);
+			path = "UI Layer";
+			sourceTree = "<group>";
+		};
+		843E24E0213A1F3E004D381C /* Data Access Layer */ = {
+			isa = PBXGroup;
+			children = (
+				843E24E2213A1F63004D381C /* Models */,
+			);
+			path = "Data Access Layer";
+			sourceTree = "<group>";
+		};
+		843E24E1213A1F47004D381C /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		843E24E2213A1F63004D381C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		843E24E3213A1F69004D381C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		8449B8FF213A1EFB0000C80F /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				846D6048213A1D900082481F /* Main.storyboard */,
+				846D604D213A1D920082481F /* LaunchScreen.storyboard */,
+				846D604B213A1D920082481F /* Assets.xcassets */,
+				846D6050213A1D920082481F /* Info.plist */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
 		846D6038213A1D900082481F = {
 			isa = PBXGroup;
 			children = (
@@ -116,10 +174,8 @@
 			children = (
 				846D6044213A1D900082481F /* AppDelegate.swift */,
 				846D6046213A1D900082481F /* ViewController.swift */,
-				846D6048213A1D900082481F /* Main.storyboard */,
-				846D604B213A1D920082481F /* Assets.xcassets */,
-				846D604D213A1D920082481F /* LaunchScreen.storyboard */,
-				846D6050213A1D920082481F /* Info.plist */,
+				843E24DE213A1F2B004D381C /* Movies Module */,
+				8449B8FF213A1EFB0000C80F /* Assets */,
 			);
 			path = "MS Movies";
 			sourceTree = "<group>";
@@ -533,7 +589,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "MS Movies/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.msm.MS-Movies";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -548,7 +607,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "MS Movies/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.msm.MS-Movies";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -564,7 +626,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "MS MoviesTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.msm.MS-MoviesTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -581,7 +647,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "MS MoviesTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.msm.MS-MoviesTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -597,7 +667,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "MS MoviesUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.msm.MS-MoviesUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -613,7 +687,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "MS MoviesUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.msm.MS-MoviesUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
