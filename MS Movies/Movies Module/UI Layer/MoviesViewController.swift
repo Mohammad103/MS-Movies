@@ -7,23 +7,32 @@
 //
 
 import UIKit
+import SCLAlertView
+import SVProgressHUD
+import DZNEmptyDataSet
+import UIScrollView_InfiniteScroll
 
 class MoviesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    var viewModel = MoviesViewModel()
+    var refreshControl = UIRefreshControl()
+    
+    private var viewModel = MoviesViewModel()
+    private var keyword = ""
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.tableFooterView = UIView()
         self.configureNavigationBarStyles()
         self.configureSearchBarStyles()
+        self.configureTableView()
         
         self.viewModel.delegate = self
-        self.viewModel.reloadMovies(withKeyword: "")
+        
+        self.refreshControl.addTarget(self, action: #selector(reloadMovies), for: UIControlEvents.valueChanged)
+        self.tableView.addSubview(self.refreshControl)
     }
     
     func configureNavigationBarStyles() {
@@ -38,16 +47,41 @@ class MoviesViewController: UIViewController {
         self.searchBar.setBackgroundImage(UIColor.from(color: K.Color.primaryColor), for: .any, barMetrics: .default)
         UIBarButtonItem.appearance(whenContainedInInstancesOf:[UISearchBar.self]).tintColor = UIColor.white
     }
-
+    
+    func configureTableView() {
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
+        self.tableView.tableFooterView = UIView()
+        
+        self.tableView.addInfiniteScroll { (tableView) -> Void in
+            self.viewModel.loadMovies(withKeyword: self.keyword)
+        }
+        
+        tableView.setShouldShowInfiniteScrollHandler { _ -> Bool in
+            return self.viewModel.shouldLoadMore
+        }
+    }
+    
+    @objc func reloadMovies() {
+        SVProgressHUD.show()
+        self.viewModel.reloadMovies(withKeyword: keyword)
+    }
 }
 
 extension MoviesViewController: MoviesViewModelDelegate {
     func moviesLoadedSuccessfully() {
+        SVProgressHUD.dismiss()
+        self.refreshControl.endRefreshing()
+        self.tableView.finishInfiniteScroll()
         self.tableView.reloadData()
     }
     
     func moviesFailedWithError(_ errorMessage: String) {
+        SVProgressHUD.dismiss()
+        self.refreshControl.endRefreshing()
+        self.tableView.finishInfiniteScroll()
         
+        SCLAlertView().showError("Error", subTitle: errorMessage)
     }
 }
 
@@ -67,7 +101,8 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
 extension MoviesViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        self.viewModel.reloadMovies(withKeyword: searchBar.text!)
+        self.keyword = searchBar.text!
+        self.reloadMovies()
     }
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
@@ -82,5 +117,17 @@ extension MoviesViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+    }
+}
+
+extension MoviesViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let text = "No movies available"
+        
+        let attributes: [NSAttributedStringKey: Any] = [
+            .foregroundColor : UIColor.darkGray,
+            .font : UIFont.boldSystemFont(ofSize: 16)
+        ]
+        return NSAttributedString(string: text, attributes: attributes)
     }
 }

@@ -17,23 +17,26 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     
-    func convertDateFormater(_ date: String) -> String {
+    func convertDateFormater(_ dateStr: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        let date = dateFormatter.date(from: date)
+        let date = dateFormatter.date(from: dateStr)
         dateFormatter.dateFormat = "MMMM dd, yyyy"
-        return  dateFormatter.string(from: date!)
+        return dateFormatter.string(from: date!)
     }
     
     func setupCell(withMovie movie: Movie) {
         self.titleLabel.text = movie.title
-        self.releaseDateLabel.text = self.convertDateFormater(movie.releaseDate!)
         self.overviewLabel.text = movie.overview
+        
+        if (movie.releaseDate != nil && movie.releaseDate != "") {
+            self.releaseDateLabel.text = self.convertDateFormater(movie.releaseDate!)
+        }
         
         self.containerView.layer.cornerRadius = 5.0
         
-        let imageURL = K.ProductionServer.baseImageURL + movie.posterPath!
-        self.posterImageView.kf.setImage(with: URL(string: imageURL))
+        let imageURL = K.ProductionServer.baseImageURL + (movie.posterPath ?? "")
+        self.posterImageView.kf.setImage(with: URL(string: imageURL), placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
     }
 
 }

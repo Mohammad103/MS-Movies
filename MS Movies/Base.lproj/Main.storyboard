@@ -59,7 +59,7 @@
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLz-YC-gkp">
                                                     <rect key="frame" x="15" y="11" width="345" height="132"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vdq-jx-sis">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Vdq-jx-sis">
                                                             <rect key="frame" x="0.0" y="0.0" width="55" height="75"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="75" id="4eE-aE-PWV"/>
@@ -176,5 +176,6 @@
     </scenes>
     <resources>
         <image name="calendar" width="64" height="64"/>
+        <image name="placeholder" width="1280" height="960"/>
     </resources>
 </document>

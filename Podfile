@@ -7,6 +7,10 @@ target 'MS Movies' do
     
     pod 'Alamofire', '~> 4.7'
     pod 'Kingfisher', '~> 4.0'
+    pod 'SVProgressHUD'
+    pod 'UIScrollView-InfiniteScroll', '~> 1.1.0'
+    pod 'DZNEmptyDataSet'
+    pod 'SCLAlertView'
     
     target 'MS MoviesTests' do
         inherit! :search_paths

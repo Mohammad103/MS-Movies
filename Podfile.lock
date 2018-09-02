@@ -1,20 +1,36 @@
 PODS:
   - Alamofire (4.7.3)
+  - DZNEmptyDataSet (1.8.1)
   - Kingfisher (4.8.1)
+  - SCLAlertView (0.8)
+  - SVProgressHUD (2.2.5)
+  - UIScrollView-InfiniteScroll (1.1.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
+  - DZNEmptyDataSet
   - Kingfisher (~> 4.0)
+  - SCLAlertView
+  - SVProgressHUD
+  - UIScrollView-InfiniteScroll (~> 1.1.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - DZNEmptyDataSet
     - Kingfisher
+    - SCLAlertView
+    - SVProgressHUD
+    - UIScrollView-InfiniteScroll
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Kingfisher: 868c1149679a7ab6869be118faa9b5aed154aaf0
+  SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  UIScrollView-InfiniteScroll: 3ef456bcbe759c19f510a383cff96e6647c98c98
 
-PODFILE CHECKSUM: fd9d731848f82e5162ae593e91ef37474594980e
+PODFILE CHECKSUM: 31cdf964de3f241ef43356bcbc0d999170098b3e
 
 COCOAPODS: 1.5.3

@@ -24,12 +24,23 @@ class MoviesViewModel {
     
 
     func loadMovies(withKeyword keyword: String) {
+        if !self.shouldLoadMore {
+            return
+        }
+        
         MoviesAPIManager.loadMovies(withKeywork: keyword, pageNumber: self.pageNumber, success: { (response) in
+            
             self.pageNumber += 1
+            if response.page == response.totalPages {
+                self.shouldLoadMore = false
+            }
             if let movies = response.movies {
                 self.movies.append(contentsOf: movies)
+                self.delegate?.moviesLoadedSuccessfully()
+            } else {
+                self.delegate?.moviesFailedWithError("There is no movie with this name in the database.")
             }
-            self.delegate?.moviesLoadedSuccessfully()
+            
         }, failure: { (errorMessage) in
             self.delegate?.moviesFailedWithError(errorMessage)
         })
@@ -38,6 +49,7 @@ class MoviesViewModel {
     func reloadMovies(withKeyword keyword: String) {
         self.movies = []
         self.pageNumber = 1
+        self.shouldLoadMore = true
         self.loadMovies(withKeyword: keyword)
     }
     
