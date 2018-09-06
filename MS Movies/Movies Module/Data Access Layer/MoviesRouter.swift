@@ -38,7 +38,8 @@ enum MoviesRouter: URLRequestConvertible {
     
     // MARK: - URLRequestConvertible
     func asURLRequest() throws -> URLRequest {
-        let url = K.ProductionServer.baseURL + path
+        var url = K.ProductionServer.baseURL + path
+        url = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
         var urlRequest = URLRequest(url: URL(string: url)!)
         urlRequest.httpMethod = method.rawValue
         return urlRequest
