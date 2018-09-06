@@ -24,4 +24,8 @@ struct K {
     struct Color {
         static let primaryColor = UIColor(red: 55.0/255, green: 180.0/255, blue: 78.0/255, alpha: 1.0)
     }
+    
+    struct UserDefaultsKey {
+        static let moviesHistory = "movies_history"
+    }
 }

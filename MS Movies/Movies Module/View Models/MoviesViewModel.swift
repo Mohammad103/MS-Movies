@@ -35,6 +35,8 @@ class MoviesViewModel {
                 self.shouldLoadMore = false
             }
             if let movies = response.movies {
+                MoviesHistoryManager.saveMovieToHistory(movieName: keyword)
+                
                 self.movies.append(contentsOf: movies)
                 self.delegate?.moviesLoadedSuccessfully()
             } else {
@@ -61,4 +63,11 @@ class MoviesViewModel {
         return self.movies[index]
     }
     
+    func totalMoviesHistoryCount() -> Int {
+        return MoviesHistoryManager.moviesHistory().count
+    }
+    
+    func movieHistoryName(atIndex index: Int) -> String {
+        return MoviesHistoryManager.moviesHistory()[index]
+    }
 }

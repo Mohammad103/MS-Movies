@@ -20,6 +20,7 @@ class MoviesViewController: UIViewController {
     
     private var viewModel = MoviesViewModel()
     private var keyword = ""
+    private var isSearchActive = false
     
     
     override func viewDidLoad() {
@@ -68,6 +69,7 @@ class MoviesViewController: UIViewController {
     }
 }
 
+
 extension MoviesViewController: MoviesViewModelDelegate {
     func moviesLoadedSuccessfully() {
         SVProgressHUD.dismiss()
@@ -85,15 +87,45 @@ extension MoviesViewController: MoviesViewModelDelegate {
     }
 }
 
+
 extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isSearchActive {
+            return self.viewModel.totalMoviesHistoryCount()
+        }
         return self.viewModel.totalMoviesCount()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func searchCell(forIndexPath indexPath: IndexPath) -> SearchTableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
+        cell.setupCell(withSearchText: self.viewModel.movieHistoryName(atIndex: indexPath.row))
+        return cell
+    }
+    
+    func movieCell(forIndexPath indexPath: IndexPath) -> MovieTableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell", for: indexPath) as! MovieTableViewCell
         cell.setupCell(withMovie: self.viewModel.movie(atIndex: indexPath.row))
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if isSearchActive {
+            return self.searchCell(forIndexPath: indexPath)
+        }
+        return self.movieCell(forIndexPath: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if !isSearchActive {
+            // TODO: Handle clicking on movie cell
+            return
+        }
+        
+        searchBar.resignFirstResponder()
+        self.isSearchActive = false
+        self.keyword = self.viewModel.movieHistoryName(atIndex: indexPath.row)
+        self.searchBar.text = self.keyword
+        self.reloadMovies()
     }
 }
 
@@ -101,12 +133,19 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
 extension MoviesViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        
+        self.isSearchActive = false
+        
         self.keyword = searchBar.text!
         self.reloadMovies()
     }
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         searchBar.setShowsCancelButton(true, animated: true)
+        
+        self.isSearchActive = true
+        self.tableView.reloadData()
+        
         return true
     }
     
@@ -117,8 +156,12 @@ extension MoviesViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        
+        self.isSearchActive = false
+        self.tableView.reloadData()
     }
 }
+
 
 extension MoviesViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {

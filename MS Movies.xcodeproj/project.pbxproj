@@ -26,6 +26,8 @@
 		846D604F213A1D920082481F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846D604D213A1D920082481F /* LaunchScreen.storyboard */; };
 		846D605A213A1D920082481F /* MS_MoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846D6059213A1D920082481F /* MS_MoviesTests.swift */; };
 		846D6065213A1D930082481F /* MS_MoviesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846D6064213A1D930082481F /* MS_MoviesUITests.swift */; };
+		958FA7D8214095BA006B6F06 /* MoviesHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958FA7D7214095BA006B6F06 /* MoviesHistoryManager.swift */; };
+		95F3139A214020D300FA3D60 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F31399214020D300FA3D60 /* SearchTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		846D6060213A1D930082481F /* MS MoviesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MS MoviesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		846D6064213A1D930082481F /* MS_MoviesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MS_MoviesUITests.swift; sourceTree = "<group>"; };
 		846D6066213A1D930082481F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		958FA7D7214095BA006B6F06 /* MoviesHistoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesHistoryManager.swift; sourceTree = "<group>"; };
+		95F31399214020D300FA3D60 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		9740BBF14B5D35B4B32FACA2 /* Pods_MS_MoviesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MS_MoviesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98473F7A2B7B52AB1920C924 /* Pods-MS Movies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MS Movies.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MS Movies/Pods-MS Movies.debug.xcconfig"; sourceTree = "<group>"; };
 		DCCC83FE01A208E127FD06CA /* Pods-MS Movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MS Movies.release.xcconfig"; path = "Pods/Target Support Files/Pods-MS Movies/Pods-MS Movies.release.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 		843E24DE213A1F2B004D381C /* Movies Module */ = {
 			isa = PBXGroup;
 			children = (
+				958FA7D62140958D006B6F06 /* Managers */,
 				843E24E0213A1F3E004D381C /* Data Access Layer */,
 				843E24E1213A1F47004D381C /* View Models */,
 				843E24DF213A1F37004D381C /* UI Layer */,
@@ -165,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				84307D5B213B071700EA8F28 /* MovieTableViewCell.swift */,
+				95F31399214020D300FA3D60 /* SearchTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -239,6 +245,14 @@
 				846D6066213A1D930082481F /* Info.plist */,
 			);
 			path = "MS MoviesUITests";
+			sourceTree = "<group>";
+		};
+		958FA7D62140958D006B6F06 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				958FA7D7214095BA006B6F06 /* MoviesHistoryManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		C603DB3BA6A1CA560382D7D1 /* Frameworks */ = {
@@ -489,10 +503,12 @@
 				843E24E9213A3667004D381C /* MoviesAPIManager.swift in Sources */,
 				846D6045213A1D900082481F /* AppDelegate.swift in Sources */,
 				843E24EB213A369D004D381C /* MoviesRouter.swift in Sources */,
+				95F3139A214020D300FA3D60 /* SearchTableViewCell.swift in Sources */,
 				843E24EE213A3889004D381C /* Constants.swift in Sources */,
 				84307D5E213B482800EA8F28 /* UIColor+Utilities.swift in Sources */,
 				843E24E7213A2190004D381C /* Movie.swift in Sources */,
 				84307D5C213B071700EA8F28 /* MovieTableViewCell.swift in Sources */,
+				958FA7D8214095BA006B6F06 /* MoviesHistoryManager.swift in Sources */,
 				843E24E5213A2157004D381C /* MoviesResponse.swift in Sources */,
 				84307D60213B557100EA8F28 /* MoviesViewModel.swift in Sources */,
 			);
@@ -670,6 +686,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "MS Movies/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.msm.MS-Movies";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -685,6 +702,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "MS Movies/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.msm.MS-Movies";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -701,6 +719,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "MS MoviesTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.msm.MS-MoviesTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -718,6 +737,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "MS MoviesTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.msm.MS-MoviesTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -734,6 +754,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "MS MoviesUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.msm.MS-MoviesUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -750,6 +771,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "MS MoviesUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.msm.MS-MoviesUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
