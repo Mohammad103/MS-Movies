@@ -38,12 +38,4 @@ class MoviesAPIManager: NSObject {
         }
     }
     
-    class func loadMovies(pageNumber: Int, success: @escaping (_: MoviesResponse) -> Void, failure: @escaping (_: String) -> Void) {
-        self.loadMovies(withKeywork: "", pageNumber: pageNumber, success: { (response) in
-            success(response)
-        }, failure: { (errorMessage) in
-            failure(errorMessage)
-        })
-    }
-    
 }
