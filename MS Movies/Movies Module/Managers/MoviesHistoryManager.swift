@@ -14,6 +14,10 @@ class MoviesHistoryManager {
         return UserDefaults.standard.array(forKey: K.UserDefaultsKey.moviesHistory) as? [String] ?? []
     }
     
+    class func clearMoviesHistory() {
+        UserDefaults.standard.set([], forKey: K.UserDefaultsKey.moviesHistory)
+    }
+    
     class func saveMovieToHistory(movieName: String) {
         let maxElements = 10
         var list: [String] = moviesHistory()
