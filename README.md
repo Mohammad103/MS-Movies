@@ -22,3 +22,16 @@ cd project_dir
 pod install
 Open workspace file & run the project
 ```
+
+### Architecture
+
+MVVM, to avoid massive view controller and to be easy in testing
+
+### External Libraries
+
+* Alamofire
+* Kingfisher
+* SVProgressHUD
+* UIScrollView-InfiniteScroll
+* DZNEmptyDataSet
+* SCLAlertView
