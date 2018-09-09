@@ -35,7 +35,9 @@ class MoviesViewModel {
                 self.shouldLoadMore = false
             }
             if let movies = response.movies {
-                MoviesHistoryManager.saveMovieToHistory(movieName: keyword)
+                if movies.count > 0 {
+                    MoviesHistoryManager.saveMovieToHistory(movieName: keyword)
+                }
                 
                 self.movies.append(contentsOf: movies)
                 self.delegate?.moviesLoadedSuccessfully()
